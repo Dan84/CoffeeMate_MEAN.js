@@ -1,0 +1,68 @@
+
+<div class="jumbotron text-center">
+    <h1 id = "mainMessage">COFFEE LIST</h1>
+
+    <!--<p>{{ message }}</p>-->
+    <div class="panel panel-default box-shadow--6dp">
+        <div class="panel-body">
+    <div ng-controller="coffeesController as list">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1" >
+    <div class="responsive">
+        <table class="table table-bordered box-shadow--6dp" id = "coffeesTable">
+            <thead>
+            <tr>
+                <th>Rating</th>
+                <th>Coffee Name</th>
+                <th>Coffee Shop</th>
+                <th>Price</th>
+                <th> </th>
+                <th> </th>
+            </tr>
+            </thead>
+            <tbody ng-repeat="coffee in coffees | orderBy:'-rating'">
+            <tr>
+                <td>
+                    <span class="glyphicon glyphicon-star" ng-click=""></span>
+                    {{coffee.rating}}
+                </td>
+                <td>
+                    <span style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle";>{{coffee.coffeename}}</span>
+                </td>
+                <td>
+                    <span style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle";>{{coffee.coffeeshop}}</span>
+                </td>
+                <td>
+                    <!--<span class="glyphicon glyphicon-euro"></span>-->
+                    {{coffee.price | currency : '€' }}
+                </td>
+                <td>
+
+                    <!--<span style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle";>-->
+
+
+                    <button type="button" class="btn btn-danger" ng-click="delete(coffee._id)">Delete
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </td>
+                <td>
+                    <button  type="button" class="btn btn-primary"  ng-click="edit(coffee)">
+                        <span class="glyphicon glyphicon-edit"></span> Edit
+                    </button>
+                    </span>
+                </td>
+            </tr>
+            </tr>
+
+
+
+            </tbody>
+        </table>
+    </div>
+                </div>
+        </div>
+</div>
+</div>
+    </div>
+</div>
+

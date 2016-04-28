@@ -1,0 +1,94 @@
+<html ng-app="CoffeeMate" >
+<!--<html itemscope itemtype="http://schema.org/Article">-->
+<head>
+  <title>Dan's CoffeeMate</title>
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" />
+<!--<link type="text/css" rel="stylesheet" href=".node-modules/angular-flash-alert/dist/angular-flash.min.css" />-->
+  <link type="text/css" rel="stylesheet" href="./stylesheets/style.css"/>
+  <!--<script href="./angular-confirm/angular-confirm.min.js"></script>-->
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBx3zoanPWKjLQEMf1Lvj_k-N8lJXdGHI"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular-route.js"></script>
+
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+  <script src="/javascripts/angularApp.js"></script>
+  <script src="/javascripts/controllers/maincontroller.js"></script>
+  <script src="/javascripts/controllers/addcoffeecontroller.js"></script>
+  <script src="/javascripts/controllers/coffeescontroller.js"></script>
+  <script src="/javascripts/controllers/aboutcontroller.js"></script>
+  <script src="/javascripts/controllers/contactcontroller.js"></script>
+  <script src="/javascripts/controllers/favouritescontroller.js"></script>
+  <script src="/javascripts/controllers/updatecontroller.js"></script>
+  <script src="/javascripts/factory/updatecoffeefactory.js"></script>
+  <script src="/javascripts/controllers/mapcontroller.js"></script>
+  <script src="/javascripts/controllers/logincontroller.js"></script>
+  <script src="/javascripts/factory/userFactory.js"></script>
+
+  <!-- <script src="/node_modules/angular-money-directive.js"></script>-->
+  <style> .glyphicon-thumbs-up { cursor:pointer } </style>
+  <meta name="google-signin-client_id" content="553211727427-78742t3j5ekbe9qhvbikgsqn9cfkgf3g.apps.googleusercontent.com">
+</head>
+
+<body ng-controller="mainController">
+<div id="result"></div>
+
+</script><script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-inverse navbar-static-top navbar-custom" role="navigation" ng-controller="loginController">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#/"><i class="fa fa-coffee fa-lg" style="color: white;"></i>Dan's CoffeeMate </a>
+    </div>
+
+    <ul class="nav navbar-nav navbar-right">
+      <div class="navbar-right" >
+            <div class="row">
+              <div class="col-md-2">
+                  <img ng-src="{{pimg}}" id = "profileImg" ng-hide="showImg">
+              </div>
+              <div class="col-md-5">
+                  <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" ></div>
+              </div>
+              <div class="col-md-4">
+                  <a href="#/" id="logout" ng-click="signOut();" class="btn btn-danger" ng-hide="showLogout">Sign out </a>
+              </div>
+            </div>
+      </div>
+      <li><a href="#/"><i class="fa fa-home"></i> Home</a></li>
+      <li><a href="#coffee"><i class="fa fa-coffee"></i> Add Coffee</a></li>
+      <li><a href="#coffees"><i class="fa fa-list"></i> View Coffees</a></li>
+      <li><a href="#favourites"><i class="fa fa-heart"></i>Favourites</a></li>
+      <!--<li><a href="#about"><i class="fa fa-info"></i> About</a></li>
+      <li><a href="#contact"><i class="fa fa-comment"></i> Contact</a></li>-->
+      <li><a href="#map"><i class="fa fa-map-marker"></i>Locations</a></li>
+
+    </ul>
+
+  </div>
+</nav>
+
+
+<!-- MAIN CONTENT AND INJECTED VIEWS -->
+<div class = "container">
+
+  <!--<div ng-view></div>-->
+  <div ng-view="" class="ng-scope"></div>
+    <!--<style class="ng-scope">
+
+      #coffeeMap {
+        height:440px;
+        width:100%;
+      }
+
+    </style>-->
+
+</div> <!-- End of main div -->
+<footer class="text-center">
+  <p>Daniel Kehoe Coffee Mate</p>
+</footer>
+</body>
+</html>

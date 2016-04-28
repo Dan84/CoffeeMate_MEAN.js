@@ -1,0 +1,42 @@
+<div class="jumbotron text-center">
+    <h1 id = "mainMessage">YOUR COFFEE'S</h1>
+
+
+                <div class="panel panel-default box-shadow--6dp">
+                    <div class="panel-body">
+                            <div ng-controller="mapController">
+                                <div class="row">
+                                    <div class="col-md-6 ">
+                                        <div id="map"></div>
+
+                                    </div>
+                                    <div class="col-md-3">
+                                       <!-- <div class="responsive">-->
+                                            <table class="table table-hover box-shadow--6dp" id = "coffeesTable" >
+                                                <thead>
+                                                <tr>
+
+                                                    <th>Coffee Name</th>
+
+                                                </tr>
+                                                </thead>
+                                                <tbody ng-repeat="marker in markers | orderBy:'title';">
+                                                <tr ng-click="openInfoWindow($event, marker)">{{marker.title}}>
+                                                    <td>
+                                                        {{marker.title}}
+                                                        <!--<a href="#" ng-click="openInfoWindow($event, marker)">{{marker.title}}</a>-->
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                                </table>
+                                           <!-- </div>-->
+                                        <!--<div id="class" ng-repeat="marker in markers | orderBy:'title';">
+                                            <a href="#" ng-click="openInfoWindow($event, marker)">{{marker.title}}</a>
+                                        </div>-->
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                </div>
+</div>

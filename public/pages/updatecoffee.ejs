@@ -1,0 +1,60 @@
+<div class="jumbotron text-center">
+    <h1 id = "mainMessage">UPDATE COFFEE</h1>
+
+    <div ng-controller="updateController" >
+
+        <div class="row" >
+
+            <div class="col-md-6 col-md-offset-3">
+                <div class="panel panel-default box-shadow--6dp">
+                    <div class="panel-body">
+
+                <form ng-submit="updateCoffee()"
+                      style="margin-top:30px;">
+                    <h3>Update</h3>
+                    <div class="form-group" align="center" >
+                        <button-favorite class="btn btn-icon"><span class="glyphicon glyphicon-heart" ng-class="{'active': favourite}" ng-click="activeButton()" ></span></button-favorite>
+                    </div>
+                    <div class="form-group" align="center" >
+                        <input type="hidden" id="id" name="id" ng-model="updatecoffee.id" />
+                        Coffee Name  <input type = "text" class="form-control"  ng-style="{'width': 300 + 'px'}"  ng-model = "coffee.coffeename" >
+                        </input>
+                    </div>
+                    <div class="form-group" align="center">
+                        <!-- <label for="shop">Coffee Shop</label>-->
+                        Coffee Shop<input type = "text" class="form-control"  ng-style="{'width': 300 + 'px'}" ng-model = "coffee.coffeeshop">
+                        </select>
+                    </div>
+
+                    <div class="form-group" align="center">
+                        Coffee Price   <input type="double"
+                                              class="form-control"
+                                              placeholder="Price"
+                                              ng-model="coffee.price"
+                                              ng-style="{'width': 100 + 'px'}"></input>
+                    </div>
+
+                    <div class= "form-group" align="center">
+                        <!--<h2>{{rating.current}} /
+                            {{rating.max}}</h2>-->
+                        <div star-rating rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating)" ng-model = "coffee.rating"></div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Update Coffee</button>
+                </form>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+
+
+
+
+
+
+</div>

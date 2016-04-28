@@ -1,0 +1,22 @@
+{
+  "name": "Daniel Kehoe",
+  "description": "Coffee Mate app",
+  "main": "",
+  "authors": [
+    "Daniel Kehoe <dwk244@gmail.com>"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-input-stars-directive": "angular-input-stars#^1.5.5"
+  }
+}
