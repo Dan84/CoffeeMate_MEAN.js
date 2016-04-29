@@ -70,14 +70,14 @@ var options = { server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000
   replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } },
   user: 'dannyk', pass: 'coffee1984' };
 
-//ENTER YOUR MONGODB CONNECTION STRING HERE IN PLACE OF MY ONE
+
 var mongodbUri = 'mongodb://ds021681.mlab.com:21681/heroku_6x5rm7w8';
 
-//var mongooseUri = uriUtil.formatMongoose(mongodbUri);
-var mongooseUri =require('mongodb-uri').formatMongoose(mongodbUri);
+var mongooseUri = uriUtil.formatMongoose(mongodbUri);
+//var mongooseUri =require('mongodb-uri').formatMongoose(mongodbUri);
 
-//mongoose.connect('mongodb://localhost:27017/coffeematedb');
-mongoose.connect(mongooseUri,options);
+mongoose.connect('mongodb://localhost:27017/coffeematedb');
+//mongoose.connect(mongooseUri,options);
 var db = mongoose.connection;
 
 db.on('error', function (err) {
