@@ -74,7 +74,7 @@ var options = { server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000
 var mongodbUri = 'mongodb://ds021681.mlab.com:21681/heroku_6x5rm7w8';
 
 var mongooseUri = uriUtil.formatMongoose(mongodbUri);
-//var mongooseUri =require('mongodb-uri').formatMongoose(mongodbUri);
+var mongooseUri =require('mongodb-uri').formatMongoose(mongodbUri);
 
 mongoose.connect('mongodb://localhost:27017/coffeematedb');
 //mongoose.connect(mongooseUri,options);
