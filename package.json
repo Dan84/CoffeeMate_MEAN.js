@@ -15,6 +15,7 @@
     "ejs": "~2.3.3",
     "express": "~4.13.1",
     "mongodb": "^2.1.18",
+    "mongodb-uri": "^0.9.7",
     "mongoose": "^4.4.14",
     "mongoose-double": "0.0.1",
     "morgan": "~1.6.1",
