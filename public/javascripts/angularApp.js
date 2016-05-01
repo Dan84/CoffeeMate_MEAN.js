@@ -52,11 +52,11 @@ app.config(function($routeProvider) {
 
 });
 
+/*this function is called when on each route to check if user is logged in*/
 var onlyLoggedIn = function ($location,$q,userProfile) {
     var deferred = $q.defer();
     if (userProfile.getAuth()) {
         deferred.resolve();
-        //console.log("logged in");
     } else {
         deferred.reject();
         //console.log("not logged");

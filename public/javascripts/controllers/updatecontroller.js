@@ -2,29 +2,27 @@ var app = angular.module('CoffeeMate');
 
 app.controller('updateController', ['$scope','$location','$http', 'updateCoffee', function($scope,$location, $http, updateCoffee) {
 
+    /*retrieve coffee details from updateCoffee factory*/
     $scope.coffee = updateCoffee.getCoffee();
 
     $scope.favourite = updateCoffee.getFavourite();
-    console.log( $scope.favourite+"  booga");
+
     $scope.activeButton = function() {
         $scope.favourite = !$scope.favourite;
-        console.log($scope.favourite+" its a fave");
     }
 
 
     $scope.formData = {};
-    //var current = 1;
-    //$scope.rating =
+    /*Retrieve current rating from updateCoffee factory and retrieve new rating if changed*/
     $scope.rating = {
         current: updateCoffee.getRating(),
         max: 5 };
     $scope.getSelectedRating = function (rating) {
-        console.log(rating);
         $scope.coffee.rating = rating
     }
 
+    /*retrive values from fields and update the coffee*/
     $scope.updateCoffee = function(){
-        console.log( $scope.favourite+"  booga");
         $scope.formData.coffeename = $scope.coffee.coffeename;
         $scope.formData.coffeeshop = $scope.coffee.coffeeshop;
         $scope.formData.price = $scope.coffee.price;
@@ -42,7 +40,7 @@ app.controller('updateController', ['$scope','$location','$http', 'updateCoffee'
     };
 }]);
 
-
+/*Star rating Directive*/
 app.directive('starRating', function () {
     return {
         restrict: 'A',
@@ -84,22 +82,7 @@ app.directive('starRating', function () {
 });
 
 
-/*
-app.directive('buttonFavorite', function() {
-    return {
-        scope: true,
-        restrict: 'E',
-        template: '<button class="btn btn-icon"><span class="glyphicon glyphicon-heart" ng-class="{active: item.favorite}" ></span></button>',
-        link: function(scope, elem) {
-            elem.bind('click', function() {
-                scope.toggle(function(){
-                    scope.item.favorite = !scope.item.favorite;
-                });
-            });
-        }
-    };
-});
-*/
+
 
 
 

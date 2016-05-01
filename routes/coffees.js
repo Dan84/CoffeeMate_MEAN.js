@@ -13,11 +13,6 @@ router.findAll = function(req, res) {
     });
 }
 
-/*router.findAll = function(req, res) {
-
-    res.json(coffees);
-}*/
-
 
 router.findOne = function(req, res) {
 
@@ -44,7 +39,7 @@ router.addCoffee = function(req, res) {
 
     console.log('Adding your Coffee: ' + JSON.stringify(coffee));
 
-    // Save the donation and check for errors
+
     coffee.save(function(err) {
         if (err)
             res.send(err);
@@ -57,7 +52,6 @@ router.addCoffee = function(req, res) {
 
 router.updateCoffee = function(req, res) {
     Coffee.findById(req.params.id, function(err,coffee) {
-        //console.log( req+"boogddddda");
         coffee.coffeename = req.body.coffeename;
         coffee.coffeeshop = req.body.coffeeshop;
         coffee.price = req.body.price;

@@ -2,11 +2,12 @@ var app = angular.module('CoffeeMate');
 
 app.controller('coffeesController', ['$scope','$location','$http','updateCoffee', function($scope,$location, $http, updateCoffee) {
     $scope.message = 'Coffees Page!';
-
+    /*retrieve users Google id*/
     var id = window.localStorage.getItem('user-id');
 
     findAll();
 
+    /*find all coffees based on the users id*/
     function findAll() {
         $http.get('/coffees/'+id)
             .success(function (data) {
@@ -18,10 +19,9 @@ app.controller('coffeesController', ['$scope','$location','$http','updateCoffee'
             });
     };
 
+    /*Delete coffee function*/
     $scope.delete = function(id) {
-
         if (confirm("Are you sure you want to delete this Coffee?")) {
-        //if( $confirm({text: 'Are you sure you want to delete?'})){
             console.log('Deleting id : ' + id);
             $http.delete('/coffees/'+id)
                 .success(function(data) {
@@ -37,26 +37,17 @@ app.controller('coffeesController', ['$scope','$location','$http','updateCoffee'
     };
 
 
-
+    /*this function passes coffee details to updateCoffee factory*/
     $scope.edit = function(coffee){
 
         updateCoffee.setCoffee(coffee);
-        console.log(coffee);
+        //console.log(coffee);
         $location.path('/coffees/'+coffee._id);
     };
 
 
 
-   /* $scope.incrementUpvotes = function(id){
-        $http.put('/donations/'+id +'/votes')
-            .success(function(data){
-                console.log(data);
-                findAll();
-            })
-            .error(function(data){
-                console.log('Error: ' +data);
-            });
-    }*/
+
 
 }
 ]);

@@ -5,9 +5,10 @@ app.controller('addcoffeeController', ['$scope','$location','$http','userProfile
     $scope.formData = {};
 
     $scope.message = 'New Coffee Page!';
+    /*Retrieve the Users Google id*/
+    var id = window.localStorage.getItem('user-id');
 
-    var id = window.localStorage.getItem('user-id'); // userProfile.getUserId();
-
+    /*Adds a coffee with values from input fields*/
     $scope.addCoffee = function(){
         $scope.formData.coffeename = $scope.coffeename;
         $scope.formData.coffeeshop = $scope.coffeeshop;
@@ -29,24 +30,6 @@ app.controller('addcoffeeController', ['$scope','$location','$http','userProfile
     };
 
 
-    $scope.updateCoffee = function(id){
-        var tempCoffee;
-        tempCoffee = $http.get('/coffees/'+id)
-            .success(function(data) {
-                console.log(data);
-
-                /*$scope.formData.coffeename = tempCoffee.coffeename;
-                $scope.formData.coffeeshop = tempCoffee.coffeeshop;
-                $scope.formData.price = tempCoffee.price;*/
-
-
-            })
-            .error(function(data){
-                console.log('Error: ' +data)
-            });
-    };
-
-
 
     var map;
 
@@ -56,7 +39,7 @@ app.controller('addcoffeeController', ['$scope','$location','$http','userProfile
             enableHighAccuracy: true
         };
 
-        //var myLatlng = $scope.position;
+
         var myLatlng = new google.maps.LatLng(52.33,-6.45);
         var myOptions = {
             zoom: 13,
@@ -71,7 +54,7 @@ app.controller('addcoffeeController', ['$scope','$location','$http','userProfile
             map: map,
             title: "Your location"
         });
-
+        /*Adds listener and drops a marker, removes last marker*/
         google.maps.event.addListener(map, 'click', function(event) {
             marker.setMap(null);
             if(lastMarker != null){
@@ -81,18 +64,20 @@ app.controller('addcoffeeController', ['$scope','$location','$http','userProfile
             $scope.longitude = event.latLng.lng();
 
             lastMarker = new google.maps.Marker({
-                //draggable: true,
                 position: event.latLng,
                 map: map,
                 title: "Your coffee Location"
             });
         });
 
+        /*function to ressize the map and pan to location marker when map is opened*/
         $scope.$watch('showMap', function () {
-
             window.setTimeout(function(){
 
                 google.maps.event.trigger(map, 'resize');
+                if(lastMarker) {
+                    map.panTo(lastMarker.getPosition());
+                }else{map.panTo(marker.getPosition());}
             },0);
 
         });

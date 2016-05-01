@@ -4,7 +4,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var coffees = require('./routes/coffees.js');
@@ -30,7 +29,6 @@ app.use('/users', users);
 app.get('/coffees/:id', coffees.findAll);
 app.get('/coffees/:id', coffees.findOne);
 app.post('/coffee', coffees.addCoffee);
-//app.put('/coffees/:id/rating', coffees.incrementRating);
 app.put('/coffees/:id', coffees.updateCoffee);
 app.delete('/coffees/:id', coffees.deleteCoffee);
 

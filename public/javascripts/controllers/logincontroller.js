@@ -5,6 +5,7 @@ app.controller('loginController', ['$scope', 'userProfile', function($scope, use
 
     $scope.showLogout = true;
 
+        /*Signs in the User and retrieves information passing to UserProfile factory and photo to windowStorage*/
         function onSignIn(googleUser) {
             var profile = googleUser.getBasicProfile();
             //console.log(window.localStorage.getItem('user-pic'));
@@ -23,11 +24,9 @@ app.controller('loginController', ['$scope', 'userProfile', function($scope, use
             $scope.showImg = false;
             $scope.$apply();
         }
-
-
         window.onSignIn = onSignIn;
 
-
+        /*signs out user from Google account and calls remove user from userProfile factory*/
         $scope.signOut = function()  {
             var auth2 = gapi.auth2.getAuthInstance();
             auth2.signOut().then(function () {

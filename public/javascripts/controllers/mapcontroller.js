@@ -5,6 +5,7 @@ app.controller('mapController', ['$scope','$http', function ($scope, $http) {
     var id = window.localStorage.getItem('user-id');
     findAll();
 
+    /*find all coffee and call createMarker function to get coffee location from each entry*/
     function findAll() {
         $http.get('/coffees/'+id)
             .success(function (data) {
@@ -14,7 +15,7 @@ app.controller('mapController', ['$scope','$http', function ($scope, $http) {
 
                     createMarker($scope.coffees[i]);
                 }
-                console.log(data);
+                //console.log(data);
             })
             .error(function (data) {
                 console.log('Error: ' + data);
@@ -48,13 +49,12 @@ app.controller('mapController', ['$scope','$http', function ($scope, $http) {
         });
 
         google.maps.event.addListener($scope.map, 'click', function(){
-            //alert('Lat, Lng : ' + $scope.latitude + ' ' + $scope.longitude);
 
         });
         $scope.markers.push(marker);
 
     }
-
+    /*Show information when click on marker*/
     $scope.openInfoWindow = function(e, selectedMarker){
         e.preventDefault();
         google.maps.event.trigger(selectedMarker, 'click');
